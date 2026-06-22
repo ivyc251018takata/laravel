@@ -39,7 +39,7 @@
 
 ## 画面遷移図
 
-![画面遷移図](images/flow.png)
+https://www.figma.com/design/0LG9tZePzn1Gb9tkVYUczE/Web%E9%96%8B%E7%99%BA%E5%AE%9F%E7%BF%92?node-id=0-1&m=dev&t=roWRG2ML1AGsPRHm-1
 
 ## 工夫した点
 
