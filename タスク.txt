@@ -1,7 +1,13 @@
 環境構築
     フロントエンドの技術を選ぶ
         Blade,React,Vueなどがある
-    Docker
-        chatGPTを参考に進めよう
-            WSL2が使えるか確認    
-    
+2. ER図を最終確定する
+    parties に幹事を表すカラムがない
+    join_code の桁数を決める
+    copied_from_party_id にFKを付ける
+    quantity は unsigned
+    unit_price は NULL を許可してもよい
+3. モデルとマイグレーション作成
+4. マイグレーションを書く
+5. migrate
+6. 画面を作り始める
