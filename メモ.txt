@@ -1,1 +1,2 @@
 organizer_tokenとCookieで過去の宴会見る
+    organizer_tokenは自動生成

@@ -5,7 +5,10 @@
     parties に幹事を表すカラムがない
         Cookieで管理
             organizer_token追加
+                word
+                E-R図
     copied_from_party_id にFKを付ける
+        自己参照がわからない
 3. モデルとマイグレーション作成
 4. マイグレーションを書く
 5. migrate
