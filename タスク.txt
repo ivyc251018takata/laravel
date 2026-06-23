@@ -4,7 +4,6 @@
 2. ER図を最終確定する
     parties に幹事を表すカラムがない
     copied_from_party_id にFKを付ける
-    unit_price は NULL を許可してもよい
 3. モデルとマイグレーション作成
 4. マイグレーションを書く
 5. migrate
