@@ -1,0 +1,7 @@
+環境構築
+    フロントエンドの技術を選ぶ
+        Blade,React,Vueなどがある
+    Docker
+        chatGPTを参考に進めよう
+            WSL2が使えるか確認    
+    
