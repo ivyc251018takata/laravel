@@ -3,6 +3,8 @@
         Blade,React,Vueなどがある
 2. ER図を最終確定する
     parties に幹事を表すカラムがない
+        Cookieで管理
+            organizer_token追加
     copied_from_party_id にFKを付ける
 3. モデルとマイグレーション作成
 4. マイグレーションを書く
