@@ -3,7 +3,6 @@
         Blade,React,Vueなどがある
 2. ER図を最終確定する
     parties に幹事を表すカラムがない
-    join_code の桁数を決める
     copied_from_party_id にFKを付ける
     quantity は unsigned
     unit_price は NULL を許可してもよい
