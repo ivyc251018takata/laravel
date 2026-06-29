@@ -1,14 +1,7 @@
 環境構築
     フロントエンドの技術を選ぶ
         Blade,React,Vueなどがある
-2. ER図を最終確定する
-    parties に幹事を表すカラムがない
-        Cookieで管理
-            organizer_token追加
-                E-R図
-    copied_from_party_idを消す
-        どの宴会からコピーしたかを表すためだけのものだったから
-        E-R図
+
 3. モデルとマイグレーション作成
 4. マイグレーションを書く
 5. migrate
