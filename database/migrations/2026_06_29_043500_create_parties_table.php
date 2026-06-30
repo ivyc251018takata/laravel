@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('parties', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('join_code', 8)->unique();
+            $table->string('join_code', 6)->unique();
             $table->string('organizer_token', 64)->unique();
             $table->string('table_number')->nullable();
             $table->text('memo')->nullable();
