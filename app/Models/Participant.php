@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Participant extends Model
 {
-    public function party(): BelongsTo
-    {
-        return $this->belongsTo(Party::class);
-    }
+    protected $fillable = [
+    'party_id',
+    'nickname',
+    'memo',
+];
 
     public function orders(): HasMany
     {
