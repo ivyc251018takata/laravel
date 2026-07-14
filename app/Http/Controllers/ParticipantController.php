@@ -35,6 +35,12 @@ class ParticipantController extends Controller
             'memo' => $request->memo,
         ]);
 
-        dd($participant);
+        //後で注文入力画面（G05）が完成したら、そこへのリダイレクトに変更
+        return redirect()->route('orders.create')
+        ->cookie(
+            'participant_id',
+            $participant->id,
+            60 * 24 * 30
+        );
     }
 }

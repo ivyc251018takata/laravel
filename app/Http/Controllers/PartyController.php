@@ -24,11 +24,13 @@ class PartyController extends Controller
             'memo' => $request->memo,
         ]);
 
-        return redirect('/')
-            ->cookie(
-                'organizer_token',
-                $party->organizer_token,
-                60 * 24 * 365
-            );
+        //まだ幹事用画面を作っていないので、一時的に宴会作成画面へ戻す
+        return redirect()->route('parties.create');
+        // return redirect('/')
+        //     ->cookie(
+        //         'organizer_token',
+        //         $party->organizer_token,
+        //         60 * 24 * 365
+        //     );
     }
 }
