@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>宴会注文アプリ</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
@@ -16,6 +17,16 @@
 
     <p>
         宴会名：{{ $organizerParty->name }}
+    </p>
+
+    <p>
+        参加コード：
+        <code id="home-join-code">{{ $organizerParty->join_code }}</code>
+        <button
+            type="button"
+            class="copy-button"
+            data-copy-target="home-join-code"
+        >コピー</button>
     </p>
 
     <a href="{{ route('organizer.participants.index') }}">

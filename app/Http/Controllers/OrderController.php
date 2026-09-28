@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreOrderRequest;
+use App\Http\Requests\RejectOrderRequest;
 use App\Models\Order;
 use App\Models\Participant;
 use Illuminate\Http\RedirectResponse;
@@ -14,6 +15,16 @@ class OrderController extends Controller
     public function create(): View
     {
         return view('orders.create');
+    }
+
+    public function organizerCreate(Request $request): View
+    {
+        $party = \App\Models\Party::where(
+            'organizer_token',
+            $request->cookie('organizer_token')
+        )->firstOrFail();
+
+        return view('orders.organizer_create');
     }
 
     public function index(Request $request): View
@@ -45,6 +56,30 @@ class OrderController extends Controller
         ]);
 
         return redirect()->route('orders.create');
+    }
+
+    public function organizerStore(StoreOrderRequest $request): RedirectResponse
+    {
+        $party = \App\Models\Party::where(
+            'organizer_token',
+            $request->cookie('organizer_token')
+        )->firstOrFail();
+
+        $participant = Participant::firstOrCreate([
+            'party_id' => $party->id,
+            'nickname' => '幹事',
+        ]);
+
+        Order::create([
+            'participant_id' => $participant->id,
+            'item_name' => $request->item_name,
+            'quantity' => $request->quantity,
+            'unit_price' => $request->unit_price,
+            'memo' => $request->memo,
+            'status' => 0,
+        ]);
+
+        return redirect()->route('organizer.orders.index');
     }
 
     public function destroy(Request $request, Order $order): RedirectResponse
@@ -104,7 +139,6 @@ class OrderController extends Controller
             $organizerToken
         )->firstOrFail();
 
-        // この宴会の参加者
         $participants = Participant::where(
             'party_id',
             $party->id
@@ -158,6 +192,10 @@ class OrderController extends Controller
             return $order->unit_price === null;
         });
 
+        $pendingCount = $orders->where('status', 0)->count();
+        $approvedCount = $orders->where('status', 1)->count();
+        $rejectedCount = $orders->where('status', 2)->count();
+
         return view('orders.organizer', [
             'party' => $party,
             'participants' => $participants,
@@ -166,6 +204,9 @@ class OrderController extends Controller
             'approvedAmount' => $approvedAmount,
             'participantTotals' => $participantTotals,
             'unpricedOrders' => $unpricedOrders,
+            'pendingCount' => $pendingCount,
+            'approvedCount' => $approvedCount,
+            'rejectedCount' => $rejectedCount,
         ]);
     }
 
@@ -221,7 +262,7 @@ class OrderController extends Controller
     }
 
     public function reject(
-        Request $request,
+        RejectOrderRequest $request,
         Order $order
     ): RedirectResponse {
         $organizerToken = $request->cookie('organizer_token');

@@ -17,6 +17,15 @@ class Order extends Model
         'reject_reason',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'quantity' => 'integer',
+            'unit_price' => 'integer',
+            'status' => 'integer',
+        ];
+    }
+
     public function participant(): BelongsTo
     {
         return $this->belongsTo(Participant::class);

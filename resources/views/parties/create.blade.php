@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>宴会作成</title>
+    @vite(['resources/css/app.css'])
 </head>
 <body>
 

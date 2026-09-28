@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>参加者の注文</title>
+    @vite(['resources/css/app.css'])
 </head>
 <body>
 

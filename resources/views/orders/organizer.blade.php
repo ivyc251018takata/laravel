@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>注文一覧</title>
+    @vite(['resources/css/app.css'])
 </head>
 <body>
 
@@ -20,6 +21,18 @@
 <p>
     承認済み注文の合計：
     {{ number_format($approvedAmount) }}円
+</p>
+
+<h2>注文の状態</h2>
+
+<p>未確認：{{ $pendingCount }}件</p>
+<p>承認済み：{{ $approvedCount }}件</p>
+<p>差し戻し：{{ $rejectedCount }}件</p>
+
+<p>
+    <a href="{{ route('organizer.orders.create') }}">
+        <button type="button">自分の注文を入力する</button>
+    </a>
 </p>
 
 @if ($unpricedOrders->isNotEmpty())
@@ -141,6 +154,10 @@
                         name="reject_reason"
                         placeholder="差し戻し理由"
                     >
+
+                    @error('reject_reason')
+                        <p>{{ $message }}</p>
+                    @enderror
 
                     <button type="submit">
                         差し戻す

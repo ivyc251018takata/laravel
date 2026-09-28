@@ -73,6 +73,12 @@ Route::get('/orders/{order}/edit', [OrderController::class, 'edit'])
 Route::put('/orders/{order}', [OrderController::class, 'update'])
     ->name('orders.update');
 
+Route::get('/organizer/orders/create', [OrderController::class, 'organizerCreate'])
+    ->name('organizer.orders.create');
+
+Route::post('/organizer/orders', [OrderController::class, 'organizerStore'])
+    ->name('organizer.orders.store');
+
 Route::get('/organizer/orders', [OrderController::class, 'organizerIndex'])
     ->name('organizer.orders.index');
 
