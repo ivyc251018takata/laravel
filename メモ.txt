@@ -2,5 +2,8 @@ organizer_tokenとCookieで過去の宴会見る
     organizer_tokenは自動生成
 フロントエンドの技術を選ぶ
     Bladeに決定
-テスト用参加者用招待コード
-    MFJSVR
+テスト用参加者用招待コード見方
+    ターミナルで
+    ./vendor/bin/sail artisan tinker
+    をした後に
+    \App\Models\Party::latest()->first();

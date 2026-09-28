@@ -6,6 +6,8 @@ use App\Http\Requests\StoreParticipantRequest;
 use App\Models\Participant;
 use App\Models\Party;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ParticipantController extends Controller
 {
@@ -42,5 +44,27 @@ class ParticipantController extends Controller
             $participant->id,
             60 * 24 * 30
         );
+    }
+
+    public function organizerIndex(Request $request): View
+    {
+        $organizerToken = $request->cookie('organizer_token');
+
+        $party = Party::where(
+            'organizer_token',
+            $organizerToken
+        )->firstOrFail();
+
+        $participants = Participant::where(
+            'party_id',
+            $party->id
+        )
+        ->latest()
+        ->get();
+
+        return view('participants.organizer', [
+            'party' => $party,
+            'participants' => $participants,
+        ]);
     }
 }

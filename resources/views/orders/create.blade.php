@@ -45,5 +45,11 @@
 
 </form>
 
+<p>
+    <a href="{{ route('orders.index') }}">
+        <button type="button">自分の注文を見る</button>
+    </a>
+</p>
+
 </body>
 </html>
