@@ -57,6 +57,13 @@
     <a href="{{ route('organizer.orders.index') }}">
         <button type="button">注文一覧を見る</button>
     </a>
+
+</p>
+
+<p>
+    <a href="{{ route('home') }}">
+        <button type="button">ホームに戻る</button>
+    </a>
 </p>
 
 </body>

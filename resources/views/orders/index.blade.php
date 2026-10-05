@@ -77,5 +77,11 @@
     </a>
 </p>
 
+<p>
+    <a href="{{ route('home') }}">
+        <button type="button">ホームに戻る</button>
+    </a>
+</p>
+
 </body>
 </html>
