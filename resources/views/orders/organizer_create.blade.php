@@ -2,6 +2,7 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>幹事の注文登録</title>
     @vite(['resources/css/app.css'])
 </head>
